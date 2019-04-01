@@ -140,28 +140,23 @@ smartConnectLayerButtom = new Layer
 	visible: false
 	
 createResponseLayers = (responTxt)->
-	dynoWidth = responTxt.length * 10 + 16#length of text * fontSize + padding
 	responseText = new TextLayer
 		parent: conversationScroll.content
 		backgroundColor: "#FDF8E4"
 		borderRadius: 100
 		fontSize: 14
 		text: responTxt
-		width: dynoWidth
-# 		x: Screen.width/2 + Screen.width/4
-		x: conversationScroll.content.width - dynoWidth - 16
+		x: Align.right(-32)
 		y: (numOfResponse * (32 + 16) + (dialogFlowResponses.length) * (32+16))
 # 		y: Align.center
 		padding: 
 			top: 6
 			left: 16
 			bottom: 6
-			right: 16
+			right: 32
 		color: "#000000"
 	responTxt.autoHeight = yes
-# 	responTxt.autoWidth = yes
-	
-# 	print "Response Width: " + responTxt.width
+	responTxt.autoWidth = yes
 	
 	responses.push(responseText)
 	numOfResponse++
@@ -169,7 +164,6 @@ createResponseLayers = (responTxt)->
 #Create DialogFlow Response
 createDialogFlowResponseLayers = (responTxt_d)->	
 	responseLayer_d = new TextLayer
-# 		parent: responseLayer_d
 		parent: conversationScroll.content
 		backgroundColor: "white"
 		borderRadius: 100
@@ -177,10 +171,9 @@ createDialogFlowResponseLayers = (responTxt_d)->
 		borderColor: "#DEDEDE"
 		fontSize: 14
 		text: responTxt_d
-		width: 278
-		x: 16
+# 		width: 278
+		x: Align.left(16)
 		y: (numOfResponse * (32 + 16) + dialogFlowResponses.length * (32+16))
-# 		y: Align.center
 		padding: 
 			top: 6
 			left: 16
@@ -188,7 +181,7 @@ createDialogFlowResponseLayers = (responTxt_d)->
 			right: 16
 		color: "#000000"
 	responTxt_d.autoHeight = yes
-# 	responTxt_d.autoWidth = yes
+	responTxt_d.autoWidth = yes
 	
 	dialogFlowResponses.push(responseLayer_d)
 		
@@ -250,7 +243,6 @@ userInputFields = new Layer
 	visible: false
 textFieldLayer = new Layer
 	parent: userInputFields
-# 		x: 0
 	y: 10
 	width: 360
 	height: 48
