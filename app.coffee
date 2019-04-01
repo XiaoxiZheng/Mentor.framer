@@ -105,7 +105,7 @@ conversationScroll = new ScrollComponent
 	x: 16
 	y: smartConnectIcon.y + smartConnectIcon.height + 20
 	width: Screen.width
-	height: Screen.height/2 + 100
+	height: Screen.height
 	backgroundColor: "white"
 	scrollHorizontal: false
 	
@@ -278,6 +278,8 @@ input.on 'keyup', (e) ->
 		createResponse(@value)
 		input.value = ""
 	if e.keyCode == 27#escape
+		conversationScroll.height = Screen.height
+		
 		userInputFields.visible = false
 		userInputFields.animate
 	# 		visible: true
@@ -308,7 +310,8 @@ buttonMenu.onClick ->
 	#Destory previous quickResponses
 	for i in [0...quickResponseButtons.length]
 		quickResponseButtons[i].destroy()
-		
+	
+	conversationScroll.height = conversationScroll.height/2	
 	#Show keyboard
 	userInputFields.visible = true
 	userInputFields.animate
