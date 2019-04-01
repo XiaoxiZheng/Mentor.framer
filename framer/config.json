@@ -1,0 +1,23 @@
+{
+  "orientation" : 0,
+  "updateDelay" : 0.29999999999999999,
+  "designModeSelected" : 0,
+  "cachedDeviceHeight" : 640,
+  "contentScale" : 1,
+  "cachedDeviceWidth" : 360,
+  "fullScreen" : false,
+  "deviceType" : "google-nexus-5x",
+  "sharedPrototype" : 0,
+  "propertyPanelToggleStates" : {
+
+  },
+  "projectId" : "0C4379B1-B531-401E-AC6F-4CBB17769FDE",
+  "deviceOrientation" : 0,
+  "selectedHand" : "iphone-hands-1",
+  "showBezel" : false,
+  "foldedCodeRanges" : [
+    "{213, 534}",
+    "{747, 7191}"
+  ],
+  "deviceScale" : "fit"
+}
