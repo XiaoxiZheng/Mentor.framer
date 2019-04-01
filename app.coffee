@@ -153,7 +153,7 @@ createResponseLayers = (responTxt)->
 			top: 6
 			left: 16
 			bottom: 6
-			right: 32
+			right: 16
 		color: "#000000"
 	responTxt.autoHeight = yes
 	responTxt.autoWidth = yes
