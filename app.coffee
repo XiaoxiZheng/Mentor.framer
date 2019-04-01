@@ -44,6 +44,7 @@ numOfResponse = 1
 responses = []
 dialogFlowResponses = []
 quickResponseButtons = []
+secondQuickResponses = ['Both', 'Physical', 'Virtual']
 elongatedView = false
 
 dialogFlowResponse = "Sure! Are you open to physical or virtual meetings?"
@@ -143,11 +144,12 @@ createResponseLayers = (responTxt)->
 	responseText = new TextLayer
 		parent: conversationScroll.content
 		backgroundColor: "#FDF8E4"
-		borderRadius: 100
+		borderRadius: 10
 		fontSize: 14
 		text: responTxt
 		x: Align.right(-32)
 		y: (numOfResponse * (32 + 16) + (dialogFlowResponses.length) * (32+16))
+# 		y: dialogFlowResponses[numOfResponse].y + 16
 # 		y: Align.center
 		padding: 
 			top: 6
@@ -163,16 +165,18 @@ createResponseLayers = (responTxt)->
 
 #Create DialogFlow Response
 createDialogFlowResponseLayers = (responTxt_d)->	
+	tempNum = responses.length
 	responseLayer_d = new TextLayer
 		parent: conversationScroll.content
 		backgroundColor: "white"
-		borderRadius: 100
+		borderRadius: 10
 		borderWidth: 1
 		borderColor: "#DEDEDE"
 		fontSize: 14
 		text: responTxt_d
-# 		width: 278
+		width: 278
 		x: Align.left(16)
+# 		y: (numOfResponse * (32 + 16) + responses[tempNum].y)
 		y: (numOfResponse * (32 + 16) + dialogFlowResponses.length * (32+16))
 		padding: 
 			top: 6
@@ -181,7 +185,7 @@ createDialogFlowResponseLayers = (responTxt_d)->
 			right: 16
 		color: "#000000"
 	responTxt_d.autoHeight = yes
-	responTxt_d.autoWidth = yes
+# 	responTxt_d.autoWidth = yes
 	
 	dialogFlowResponses.push(responseLayer_d)
 		
@@ -203,6 +207,11 @@ createResponse = (responTxt) ->
 			curve: Bezier.easeOut, time: 0.2
 		)
 		
+	#5) Fake Follow up quick responses
+		for i in [0...quickResponseButtons.length]
+			quickResponseButtons[i].children[0].text = secondQuickResponses[i]
+			quickResponseButtons[i].children[0].x = Align.center
+		
 createButtonSelections = (numOfSelections) ->
 	for i in [0...numOfSelections]
 		button = new Layer
@@ -220,6 +229,7 @@ createButtonSelections = (numOfSelections) ->
 			x: Align.center
 			y: Align.center
 			color: "#3B3B38"
+			
 		quickResponseButtons.push(button)
 		
 		buttonText.onClick ->
@@ -298,6 +308,7 @@ buttonMenu.onClick ->
 	#Destory previous quickResponses
 	for i in [0...quickResponseButtons.length]
 		quickResponseButtons[i].destroy()
+		
 	#Show keyboard
 	userInputFields.visible = true
 	userInputFields.animate
