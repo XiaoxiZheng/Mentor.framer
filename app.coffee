@@ -148,7 +148,7 @@ createResponseLayers = (responTxt)->
 		fontSize: 14
 		text: responTxt
 		x: Align.right(-32)
-		y: (numOfResponse * (32 + 16) + (dialogFlowResponses.length) * (32+16))
+		y: (numOfResponse * (42 + 16) + (dialogFlowResponses.length) * (52+16))
 # 		y: dialogFlowResponses[numOfResponse].y + 16
 # 		y: Align.center
 		padding: 
@@ -177,7 +177,7 @@ createDialogFlowResponseLayers = (responTxt_d)->
 		width: 278
 		x: Align.left(16)
 # 		y: (numOfResponse * (32 + 16) + responses[tempNum].y)
-		y: (numOfResponse * (32 + 16) + dialogFlowResponses.length * (32+16))
+		y: (numOfResponse * (42 + 16) + dialogFlowResponses.length * (52+16))
 		padding: 
 			top: 6
 			left: 16
@@ -196,7 +196,7 @@ createResponse = (responTxt) ->
 	# 2) Sending text to DialogFlow api
 	callXMLHttpRequest(responTxt)
 	# 3) Create response from Dialogflow
-	Utils.delay 0.2, ->
+	Utils.delay 0.5, ->
 		createDialogFlowResponseLayers(dialogFlowResponse)
 # 	Utils.delay 0.5, ->
 	# 4) Update Scrolling
